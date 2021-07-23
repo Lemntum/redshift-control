@@ -1,0 +1,98 @@
+# Redshift Control
+
+`redshift_control.sh` is a script to simplify adjusting https://github.com/jonls/redshift[Redshift] values through manual controls, such as through keyboard shortcuts.
+
+
+## Requirements
+
+https://github.com/jonls/redshift[Redshift] and Bash (or equivalent) must be installed.
+
+
+## Install
+
+1. Copy `redshift_control.sh` into any place you want to keep it, such as `~/.local/bin/redshift_control.sh`.
+
+2. Run `redshift_control.sh` to generate a config file at `~/.config/redshift_control.conf`.
+
+3. Edit `~/.config/redshift_control.conf` with your desired preferences.
+
+3. Add to system startup: `bash -c "$HOME/.local/bin/redshift_control.sh reset"` (Change the location if you are using another directory)
+
+4. Set keyboard shortcuts through your window manager or other application meant for assigning keyboard shortcuts.
+	* https://docs.xfce.org/xfce/xfce4-settings/keyboard#application_shortcuts[XFCE]
+	* https://userbase.kde.org/System_Settings/Shortcuts_and_Gestures[KDE]
+	* https://github.com/baskerville/sxhkd[sxhkd]
+	* https://wiki.archlinux.org/title/Window_Maker#Keyboard_shortcuts[Window Maker]
+	* etc.
+
+
+## Usage
+
+----
+redshift_control.sh [OPTIONS]
+----
+
+
+### OPTIONS
+
+**increase**::
+	Increases color temperature.
+
+**decrease**::
+	Decreases color temperature.
+
+**brighter**::
+	Increases screen brightness.
+
+**darker**::
+	Decreases screen brightness.
+
+**max**::
+	Set redshift using the max_brightness and max_temp values.
+
+**min**::
+	Set redshift using the min_brightness and min_temp values.
+
+**reset**::
+	Reset brightness and color temperature.
+
+
+#### Config Options
+
+Config file is located at `$HOME/.config/redshift_control.conf`.
+
+**step_temp**::
+	Size of step to take when altering current temperature value. Default 500.
+
+**max_temp**::
+	Maximum color temperature value allowed. Default 6500.
+
+**min_temp**::
+	Minimum color temperature value allowed. Default 1500.
+
+**step_brightness**::
+	Size of step to take when altering current brightness value. Default 0.1.
+
+**max_brightness**::
+	Maximum brightness value allowed. Cannot be higher than 1. Default 1.
+
+**min_brightness**::
+	Minimum brightness value allowed. Default 0.3.
+
+
+### Example Keyboard Configuration
+
+**Super + Delete**::
+	`redshift_cootrol.sh reset`
+
+**Super + Home**::
+	`redshift_cootrol.sh brighter`
+
+**Super + End**::
+	`redshift_cootrol.sh darker`
+
+**Super + PgUp**::
+	`redshift_cootrol.sh increase`
+
+**Super + PgDn**::
+	`redshift_cootrol.sh decrease`

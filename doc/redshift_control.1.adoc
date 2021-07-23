@@ -1,0 +1,114 @@
+= REDSHIFT_CONTROL.SH(1)
+Lemntum (https://github.com/Lemntum)
+:release-version: 1.0.0
+:doctype: manpage
+:manmanual: Redshift Control
+:mansource: {release-version}
+
+
+## NAME
+
+redshift_control.sh - control redshift values for easy manual adjustment
+
+
+## SYNOPSIS
+**redshift_control.sh** [_OPTIONS_]
+
+
+## DESCRIPTION
+**redshift_control.sh** is a script to simplify adjusting Redshift values through manual controls.
+
+
+## OPTIONS
+If more than one option is provided, they will be followed in order.
+
+**increase**::
+	Increases color temperature.
+
+**decrease**::
+	Decreases color temperature.
+
+**brighter**::
+	Increases screen brightness.
+
+**darker**::
+	Decreases screen brightness.
+
+**max**::
+	Set redshift using the max_brightness and max_temp values.
+
+**min**::
+	Set redshift using the min_brightness and min_temp values.
+
+**reset**::
+	Reset brightness and color temperature.
+
+
+### Config Options
+
+Config file is located at _$HOME/.config/redshift_control.conf_.
+
+**step_temp**::
+	Size of step to take when altering current temperature value. Default 500.
+
+**max_temp**::
+	Maximum color temperature value allowed. Default 6500.
+
+**min_temp**::
+	Minimum color temperature value allowed. Default 1500.
+
+**step_brightness**::
+	Size of step to take when altering current brightness value. Default 0.1.
+
+**max_brightness**::
+	Maximum brightness value allowed. Cannot be higher than 1. Default 1.
+
+**min_brightness**::
+	Minimum brightness value allowed. Default 0.3.
+
+
+## EXAMPLES
+**redshift_control.sh**::
+	Running will no options will only generate a config file at _$HOME/.config/redshift_control.conf_ if the file does not exist.
+
+**redshift_control.sh increase**::
+	Increases the color temperature by the value set by `step_temp`.
+
+**redshift_control.sh decrease**::
+	Decreases the color temperature by the value set by `step_temp`.
+
+**redshift_control.sh brighter**::
+	Increases the brightness by the value set by `step_brightness`.
+
+**redshift_control.sh darker**::
+	Decreases the brightness by the value set by `step_brightness`.
+
+**redshift_control.sh decrease darker**::
+	Decrease both the color temperature and the screen brightness together.
+
+**redshift_control.sh reset**::
+	Undoes all color and brightness adjustments.
+
+
+### Example Keyboard Configuration
+**Super + Delete**::
+	`redshift_cootrol.sh reset`
+
+**Super + Home**::
+	`redshift_cootrol.sh brighter`
+
+**Super + End**::
+	`redshift_cootrol.sh darker`
+
+**Super + PgUp**::
+	`redshift_cootrol.sh increase`
+
+**Super + PgDn**::
+	`redshift_cootrol.sh decrease`
+
+
+## RESOURCES
+
+**Project repository:** https://github.com/Lemntum/redshift-control
+
+**Redshift:** https://github.com/jonls/redshift
