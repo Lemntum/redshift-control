@@ -12,13 +12,17 @@ https://github.com/jonls/redshift[Redshift] and Bash (or equivalent) must be ins
 
 1. Copy `redshift_control.sh` into any place you want to keep it, such as `~/.local/bin/redshift_control.sh`.
 
-2. Run `redshift_control.sh` to generate a config file at `~/.config/redshift_control.conf`.
+2. Give the script executable permissions. (`chmod +x redshift_control.sh`)
 
-3. Edit `~/.config/redshift_control.conf` with your desired preferences.
+3. Run `redshift_control.sh` to generate a config file at `~/.config/redshift_control.conf`.
 
-3. Add to system startup: `bash -c "$HOME/.local/bin/redshift_control.sh reset"` (Change the location if you are using another directory)
+4. Edit `~/.config/redshift_control.conf` with your desired preferences.
 
-4. Set keyboard shortcuts through your window manager or other application meant for assigning keyboard shortcuts.
+5. Add to system startup: `bash -c "$HOME/.local/bin/redshift_control.sh reset"` or ``bash -c "$HOME/.local/bin/redshift_control.sh set"`.
+	* `reset` will update Redshift's settings to apply as if it had not run before. This prevents unusual color jumps after a restart. 
+	* `set` will apply the last 
+
+6. Set keyboard shortcuts through your window manager or other application meant for assigning keyboard shortcuts.
 	* https://docs.xfce.org/xfce/xfce4-settings/keyboard#application_shortcuts[XFCE]
 	* https://userbase.kde.org/System_Settings/Shortcuts_and_Gestures[KDE]
 	* https://github.com/baskerville/sxhkd[sxhkd]
@@ -52,6 +56,9 @@ redshift_control.sh [OPTIONS]
 
 **min**::
 	Set redshift using the min_brightness and min_temp values.
+
+**set**::
+	Set redshift using the last set temperature and brightness settings in the config file.
 
 **reset**::
 	Reset brightness and color temperature.
@@ -96,3 +103,14 @@ Config file is located at `$HOME/.config/redshift_control.conf`.
 
 **Super + PgDn**::
 	`redshift_cootrol.sh decrease`
+
+
+## Troubleshooting
+
+### Script is not running
+
+Ensure the script has executable permissions. (`chmod +x redshift_control.sh`)
+
+### Commands cause an unexpectedly large jump in color/brightness
+
+Make sure to run the script at startup with the `reset` or `set` options.

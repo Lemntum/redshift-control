@@ -1,6 +1,6 @@
 = REDSHIFT_CONTROL.SH(1)
 Lemntum (https://github.com/Lemntum)
-:release-version: 1.0.0
+:release-version: 1.1.0
 :doctype: manpage
 :manmanual: Redshift Control
 :mansource: {release-version}
@@ -40,6 +40,9 @@ If more than one option is provided, they will be followed in order.
 **min**::
 	Set redshift using the min_brightness and min_temp values.
 
+**set**::
+	Set redshift using the last set temperature and brightness settings in the config file.
+
 **reset**::
 	Reset brightness and color temperature.
 
@@ -65,6 +68,8 @@ Config file is located at _$HOME/.config/redshift_control.conf_.
 
 **min_brightness**::
 	Minimum brightness value allowed. Default 0.3.
+
+If you manually change the values of _brightness_ or _temperature_, run **set** for it to apply.
 
 
 ## EXAMPLES

@@ -1,13 +1,4 @@
 #!/bin/bash
-#
-# Add a startup item to reset during boot:
-# bash -c "$HOME/.local/redshift_keyboard_control.sh reset"
-#
-# Use keyboard shortcuts to run this script, example:
-# System + PgDn
-# bash -c "$HOME'/Programs/scripts/redshift_keyboard_control.sh' decrease"
-# System + PgUp
-# bash -c "$HOME'/Programs/scripts/redshift_keyboard_control.sh' increase"
 
 # Set the desired location for the log file.
 conf_file="$HOME/.config/redshift_control.conf"
@@ -95,8 +86,9 @@ for arg in "$@"; do
 		"darker"  ) brightness=$(decrease_brightness); temperature=$(set_temperature $temperature) ;;
 		"max"     ) temperature=$max_temp; brightness=$max_brightness ;;
 		"min"     ) temperature=$min_temp; brightness=$min_brightness ;;
+		"set"     ) : ;;  # pass
 		"reset"   ) reset_levels ;;
-		*         ) echo "$arg is not a valid command."
+		*         ) echo "$arg is not a valid command." ; exit ;;
 	esac
 	
 	apply_redshift
