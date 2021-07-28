@@ -5,7 +5,9 @@
 
 ## Requirements
 
-https://github.com/jonls/redshift[Redshift] and Bash (or equivalent) must be installed.
+* https://github.com/jonls/redshift[Redshift]
+* Bash (or equivalent)
+* `bc`
 
 
 ## Install
