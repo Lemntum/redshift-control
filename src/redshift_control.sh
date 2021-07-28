@@ -53,8 +53,6 @@ reset_levels () {
 	redshift -x
 	sed -i "s/^temperature=.*/temperature=6500/" $conf_file
 	sed -i "s/^brightness=.*/brightness=1/" $conf_file
-
-	exit
 }
 
 if [ ! -f "$conf_file" ]; then
@@ -87,7 +85,7 @@ for arg in "$@"; do
 		"max"     ) temperature=$max_temp; brightness=$max_brightness ;;
 		"min"     ) temperature=$min_temp; brightness=$min_brightness ;;
 		"set"     ) : ;;  # pass
-		"reset"   ) reset_levels ;;
+		"reset"   ) reset_levels ; exit ;;
 		*         ) echo "$arg is not a valid command." ; exit ;;
 	esac
 	
