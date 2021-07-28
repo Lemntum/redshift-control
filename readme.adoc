@@ -22,7 +22,7 @@
 
 5. Add to system startup: `bash -c "$HOME/.local/bin/redshift_control.sh reset"` or ``bash -c "$HOME/.local/bin/redshift_control.sh set"`.
 	* `reset` will update Redshift's settings to apply as if it had not run before. This prevents unusual color jumps after a restart. 
-	* `set` will apply the last 
+	* `set` will apply the last used temperature and brightness.
 
 6. Set keyboard shortcuts through your window manager or other application meant for assigning keyboard shortcuts.
 	* https://docs.xfce.org/xfce/xfce4-settings/keyboard#application_shortcuts[XFCE]
