@@ -1,7 +1,30 @@
 #!/bin/bash
+#
+# Add a startup item to reset during boot:
+# bash -c "$HOME/.local/redshift_keyboard_control.sh reset"
+#
+# Use keyboard shortcuts to run this script, example:
+# System + PgDn
+# bash -c "$HOME'/Programs/scripts/redshift_keyboard_control.sh' decrease"
+# System + PgUp
+# bash -c "$HOME'/Programs/scripts/redshift_keyboard_control.sh' increase"
 
 # Set the desired location for the log file.
 conf_file="$HOME/.config/redshift_control.conf"
+
+
+usage="Usage: redshift_control.sh [OPTIONS]
+
+Options:
+  increase        Increase monitor color temperature one stage.
+  decrease        Decrease monitor color temperature one stage.
+  brighter        Increase monitor brightness one stage.
+  darker          Decrease monitor brightness one stage.
+  max             Set monitor temperature and brightness to their maximum.
+  min             Set monitor temperature and brightness to their minimum.
+  reset           Disable all redshift temperature and brightness adjustments.
+  help            Show this help.
+"
 
 apply_redshift () {
 	redshift -PO $temperature -b $brightness
@@ -53,6 +76,12 @@ reset_levels () {
 	redshift -x
 	sed -i "s/^temperature=.*/temperature=6500/" $conf_file
 	sed -i "s/^brightness=.*/brightness=1/" $conf_file
+
+	exit
+}
+
+show_help () {
+	echo "$usage"
 }
 
 if [ ! -f "$conf_file" ]; then
@@ -84,9 +113,9 @@ for arg in "$@"; do
 		"darker"  ) brightness=$(decrease_brightness); temperature=$(set_temperature $temperature) ;;
 		"max"     ) temperature=$max_temp; brightness=$max_brightness ;;
 		"min"     ) temperature=$min_temp; brightness=$min_brightness ;;
-		"set"     ) : ;;  # pass
-		"reset"   ) reset_levels ; exit ;;
-		*         ) echo "$arg is not a valid command." ; exit ;;
+		"reset"   ) reset_levels ;;
+		"help" | "--help" | "-h") show_help ;;
+		*         ) echo "$arg is not a valid command." ;;
 	esac
 	
 	apply_redshift
