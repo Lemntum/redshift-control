@@ -65,6 +65,9 @@ redshift_control.sh [OPTIONS]
 **reset**::
 	Reset brightness and color temperature.
 
+**help**::
+	Show help.
+
 
 #### Config Options
 
