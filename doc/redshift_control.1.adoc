@@ -1,6 +1,6 @@
 = REDSHIFT_CONTROL.SH(1)
 Lemntum (https://github.com/Lemntum)
-:release-version: 1.1.0
+:release-version: 1.2.0
 :doctype: manpage
 :manmanual: Redshift Control
 :mansource: {release-version}
@@ -45,6 +45,9 @@ If more than one option is provided, they will be followed in order.
 
 **reset**::
 	Reset brightness and color temperature.
+
+**help**::
+	Show the help.
 
 
 ### Config Options
