@@ -10,8 +10,7 @@
 # bash -c "$HOME'/Programs/scripts/redshift_keyboard_control.sh' increase"
 
 # Set the desired location for the log file.
-conf_file="$HOME/.config/redshift_control.conf"
-
+conf_file="${XDG_CONFIG_HOME:-$HOME/.config}/redshift_control.conf"
 
 usage="Usage: redshift_control.sh [OPTIONS]
 
